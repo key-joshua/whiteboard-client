@@ -13,7 +13,7 @@ const RoomJoin = ({ onRoomJoin }) => {
     setError("")
 
     try {
-      const response = await fetch("/api/rooms/join", {
+      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/rooms/join`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,7 +40,7 @@ const RoomJoin = ({ onRoomJoin }) => {
     setError("")
 
     try {
-      const response = await fetch("/api/rooms/join", {
+      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/rooms/join`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -94,8 +94,8 @@ const RoomJoin = ({ onRoomJoin }) => {
         {error && <div className="error-message">{error}</div>}
 
         <div className="room-info-text">
-          <p>🎨 Draw together in real-time</p>
-          <p>👥 Share the room code with others</p>
+          <p>Draw together in real-time</p>
+          <p>Share the room code with others</p>
         </div>
       </div>
     </div>

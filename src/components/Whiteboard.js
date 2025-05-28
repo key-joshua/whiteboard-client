@@ -19,13 +19,11 @@ const Whiteboard = ({ roomId, initialDrawingData }) => {
   const cursorThrottleRef = useRef(null)
 
   useEffect(() => {
-    const newSocket = io(process.env.REACT_APP_SERVER_URL)
+    const newSocket = io(process.env.REACT_APP_SERVER_URL, { transports: ['websocket'], });
     setSocket(newSocket)
 
-    // Join room
     newSocket.emit("join-room", roomId)
 
-    // Socket event listeners
     newSocket.on("user-count-update", (count) => {
       setUserCount(count)
     })
@@ -55,7 +53,6 @@ const Whiteboard = ({ roomId, initialDrawingData }) => {
   const handleCursorMove = (x, y) => {
     if (!socket) return
 
-    // Throttle cursor updates to ~60fps
     if (cursorThrottleRef.current) {
       clearTimeout(cursorThrottleRef.current)
     }
@@ -66,7 +63,7 @@ const Whiteboard = ({ roomId, initialDrawingData }) => {
         y,
         color: tool.color,
       })
-    }, 16) // ~60fps
+    }, 16)
   }
 
   const handleClearCanvas = () => {

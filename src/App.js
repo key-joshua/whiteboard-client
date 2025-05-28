@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="App">
       <header className="app-header">
-        <h1>🎨 Collaborative Whiteboard</h1>
+        <h1>Collaborative Whiteboard</h1>
         {currentRoom && (
           <div className="room-info">
             <span>
